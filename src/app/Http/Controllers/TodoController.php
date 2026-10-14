@@ -67,10 +67,11 @@ class TodoController extends Controller
     public function toggle(Todo $todo): RedirectResponse
     {
         $todo->update([
-            'is_completed' => !$todo->is_completed,
+            'is_completed' => ! $todo->is_completed,
         ]);
 
         $statusText = $todo->is_completed ? '完了' : '未完了';
+
         return back()->with('success', "Todoを「{$statusText}」に変更しました！");
     }
 

@@ -42,11 +42,11 @@ class Calculator
      */
     public function divide(int|float $a, int|float $b): int|float
     {
-    if ($b == 0) {
-        throw new \InvalidArgumentException('0で割ることはできません');
+        if ($b == 0) {
+            throw new \InvalidArgumentException('0で割ることはできません');
+        }
+
+        return $a / $b;
     }
 
-    return $a / $b;
-    }
-    
 }

@@ -2,9 +2,9 @@
 
 namespace Tests\Unit;
 
-use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\Test;
 use App\Services\TodoList;
+use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\TestCase;
 
 class TodoListTest extends TestCase
 {
@@ -31,16 +31,16 @@ class TodoListTest extends TestCase
     #[Test]
     public function it_can_complete_a_todo()
     {
-    // Arrange
-    $todoList = new TodoList();
-    $todoList->add('買い物に行く');
+        // Arrange
+        $todoList = new TodoList();
+        $todoList->add('買い物に行く');
 
-    // Act
-    $todoList->complete(0); // インデックス0のTodoを完了にする
+        // Act
+        $todoList->complete(0); // インデックス0のTodoを完了にする
 
-    // Assert
-    $todos = $todoList->getAll();
-    $this->assertTrue($todos[0]['completed']);
+        // Assert
+        $todos = $todoList->getAll();
+        $this->assertTrue($todos[0]['completed']);
     }
 
     /**
@@ -49,20 +49,20 @@ class TodoListTest extends TestCase
     #[Test]
     public function it_can_get_pending_todos_only()
     {
-    // Arrange
-    $todoList = new TodoList();
-    $todoList->add('買い物に行く');
-    $todoList->add('掃除をする');
-    $todoList->add('勉強する');
-    $todoList->complete(1); // 2つ目を完了にする
+        // Arrange
+        $todoList = new TodoList();
+        $todoList->add('買い物に行く');
+        $todoList->add('掃除をする');
+        $todoList->add('勉強する');
+        $todoList->complete(1); // 2つ目を完了にする
 
-    // Act
-    $pending = $todoList->getPending();
+        // Act
+        $pending = $todoList->getPending();
 
-    // Assert
-    $this->assertCount(2, $pending); // 未完了は2つ
-    $this->assertEquals('買い物に行く', $pending[0]['title']);
-    $this->assertEquals('勉強する', $pending[1]['title']);
+        // Assert
+        $this->assertCount(2, $pending); // 未完了は2つ
+        $this->assertEquals('買い物に行く', $pending[0]['title']);
+        $this->assertEquals('勉強する', $pending[1]['title']);
     }
 
     /**
@@ -71,18 +71,18 @@ class TodoListTest extends TestCase
     #[Test]
     public function it_can_remove_a_todo()
     {
-    // Arrange
-    $todoList = new TodoList();
-    $todoList->add('買い物に行く');
-    $todoList->add('掃除をする');
+        // Arrange
+        $todoList = new TodoList();
+        $todoList->add('買い物に行く');
+        $todoList->add('掃除をする');
 
-    // Act
-    $todoList->remove(0);
+        // Act
+        $todoList->remove(0);
 
-    // Assert
-    $todos = $todoList->getAll();
-    $this->assertCount(1, $todos);
-    $this->assertEquals('掃除をする', $todos[0]['title']);
+        // Assert
+        $todos = $todoList->getAll();
+        $this->assertCount(1, $todos);
+        $this->assertEquals('掃除をする', $todos[0]['title']);
     }
 
     /**
@@ -91,18 +91,18 @@ class TodoListTest extends TestCase
     #[Test]
     public function getCompleted()
     {
-    // Arrange
-    $todoList = new TodoList();
-    $todoList->add('買い物に行く');
-    $todoList->add('掃除をする');
+        // Arrange
+        $todoList = new TodoList();
+        $todoList->add('買い物に行く');
+        $todoList->add('掃除をする');
 
-    // Act
-    $todoList->remove(0);
+        // Act
+        $todoList->remove(0);
 
-    // Assert
-    $todos = $todoList->getAll();
-    $this->assertCount(1, $todos);
-    $this->assertEquals('掃除をする', $todos[0]['title']);
+        // Assert
+        $todos = $todoList->getAll();
+        $this->assertCount(1, $todos);
+        $this->assertEquals('掃除をする', $todos[0]['title']);
     }
-    
+
 }
